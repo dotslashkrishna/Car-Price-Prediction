@@ -1,0 +1,147 @@
+:root {
+    --primary-color: #000000; /* Pure Black */
+    --secondary-color: #0A0A0A; /* Slightly lighter black */
+    --accent-color: #0055FF; /* Deep Cyberpunk Blue */
+    --background-gradient: linear-gradient(135deg, #050505, #121212); /* Futuristic dark gradient */
+    --card-background: rgba(16, 16, 16, 0.95); /* Deep black with slight transparency */
+    --text-color: #D0D0D0; /* Light gray for readability */
+    --border-color: #1E1E1E; /* Dark border */
+    --hover-color: #0033AA; /* Deeper blue on hover */
+    --neon-blue: #002299; /* Muted cyberpunk blue */
+    --neon-darkblue: #0033AA; /* Slightly darker blue for accents */
+}
+
+body {
+    background: var(--background-gradient);
+    color: var(--text-color);
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* Center the main container */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+/* Cyberpunk Container Box */
+.card {
+    background: var(--card-background);
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    max-width: 400px;
+    margin: 20px;
+    border: 2px solid var(--accent-color);
+    box-shadow: 0 0 15px rgba(0, 85, 255, 0.3), 0 0 30px rgba(0, 51, 170, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Holographic shifting neon border */
+.card::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(45deg, var(--neon-darkblue), var(--neon-blue), var(--accent-color), var(--neon-darkblue));
+    filter: blur(12px);
+    z-index: -1;
+    animation: cyber-glow 3s infinite alternate;
+}
+
+@keyframes cyber-glow {
+    0% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Subtle animated scanlines */
+.card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(transparent, rgba(255, 255, 255, 0.02) 2px, transparent 4px);
+    pointer-events: none;
+    animation: scanlines 10s linear infinite;
+    opacity: 0.3; /* Slightly lower opacity for better readability */
+}
+
+@keyframes scanlines {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 0 -100%;
+    }
+}
+
+/* Typography */
+h1 {
+    font-weight: 700;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Form Elements */
+.form-control {
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    padding: 12px;
+    text-align: center;
+    background-color: #181818; /* Deep black for input fields */
+    color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: var(--accent-color);
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 85, 255, 0.6);
+}
+
+/* Button Styling */
+.btn-primary {
+    background: var(--secondary-color);
+    border: 1px solid var(--accent-color);
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-weight: 600;
+    color: var(--accent-color);
+    transition: all 0.3s;
+    text-transform: uppercase;
+}
+
+.btn-primary:hover {
+    background: var(--hover-color);
+    color: #000;
+    box-shadow: 0 0 15px rgba(0, 51, 170, 0.8);
+}
+
+/* Glowing Neon Animation */
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 5px rgba(0, 85, 255, 0.5);
+    }
+    50% {
+        text-shadow: 0 0 15px rgba(0, 85, 255, 1);
+    }
+    100% {
+        text-shadow: 0 0 5px rgba(0, 85, 255, 0.5);
+    }
+}
+
+.glow-text {
+    animation: glow 1.5s infinite alternate;
+}
